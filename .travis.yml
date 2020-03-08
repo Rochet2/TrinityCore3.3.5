@@ -1,4 +1,4 @@
-dist: xenial
+dist: bionic
 
 language: cpp
 compiler:
@@ -8,7 +8,7 @@ addons:
   apt:
     sources:
       - sourceline: 'ppa:mhier/libboost-latest'
-      - ubuntu-toolchain-r-test
+#     - sourceline: 'ubuntu-toolchain-r-test'
     packages:
       - boost1.67
       - libssl-dev
@@ -34,7 +34,7 @@ env:
   - BRANCH=gomove_3.3.5
 
 after_success:
-  - git push https://${GITHUB_TOKEN}@github.com/Rochet2/TrinityCore.git HEAD:${BRANCH}
+  - git push https://${GITHUB_TOKEN}@github.com/Rochet2/TrinityCore.git HEAD:${BRANCH} >/dev/null 2>&1
 
 before_install:
   - git clone --depth=100 --branch=${BRANCH} https://github.com/Rochet2/TrinityCore.git server
